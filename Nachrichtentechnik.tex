@@ -309,7 +309,7 @@ Quantisierungsfehler: $\vec q (\vec x) = \vec x_Q - \vec x = s_i - x$
 
 		\includegraphics{./img/FT/manchester_t.pdf} \hfill\includegraphics{./img/FT/manchester_f.pdf}
 
-		Mittelwert Null, kein Gleichstrom
+		Mittelwert Null, kein Gleichanteil
 		\subsubsection{$\cos^2$-Impuls:} 
 		$g(t) = \begin{cases}
 			\cos^2\left(\frac{\pi t}{T}\right), &\text{ für } \abs{t} < \frac{T}{2}\\
@@ -513,7 +513,8 @@ Verzerrungsfrei: $h(t) = h_0 \dirac(t-t_0)$ \qquad $H(f) = h_0 e^{-\i 2 \pi f t_
 \sectionbox{
 	\subsection{Matched Filter}
 	Signalangepasster Filter damit Signal im AWGN Kanal zum Abtastzeitpunkt die maximale SNR hat.
-	Impulsantwort des Filters:\\ $h(t) = K \cdot \cxc g_s(T-t)$ \qquad (entspricht gewendetem Sendeimpuls)\\
+	Impulsantwort des Matched Filters:\\ $h_{\ir MF}(t) = K \cdot \cxc g_s(T-t)$ \qquad (entspricht gewendetem Sendeimpuls)\\
+	$H_{\ir MF}(f)=K\cdot \cxc G_s(f)\cdot \e^{-\j 2\pi f T}$\\
 	Maximum SNR: $\frac{P_s}{P_N} = \frac{2E_s}{N_0}$\\
 }
 
