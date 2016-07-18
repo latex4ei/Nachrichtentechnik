@@ -162,13 +162,17 @@ Quantisierungsfehler: $\vec q (\vec x) = \vec x_Q - \vec x = s_i - x$
 	\pbox{4cm}{\includegraphics{./img/quantization_error.pdf}}\\
 	\emphbox{Es gilt für PDF: $\int\limits_{-\infty}^\infty f_{\X}(x) \diff x \stackrel{!}{=} 1$}
 	
-	Gleich große Quantisierungsintervalle $\mathcal I_i$ mit Breite $\Delta = g_{i+1} - g_i$\\
-	$\Delta = \frac{x_{\max} - x_{\min}}{2^m}$\\ \\
+	Gleich große Quantisierungsintervalle $\mathcal I_i=[g_i, g_{i+1}]$ mit Breite $\Delta$\\
+	$\Delta = \frac{x_{\max} - x_{\min}}{2^m} = g_{i+1} - g_i$\\ 
+	
 	Reproduktionswerte $s_i$ in der Mitte der Intervalle (midriser)\\
-	$s_i = \frac{2i - M + 1}{2} \Delta$\\
+	$s_i = \frac{2i - M + 1}{2} \Delta$\\ 
+	
+	Auftrittswahrscheinlichkeit $p_i$ der Quantisierungsstufe $s_i$ \\
+	$p_i=\int_{g_i}^{g_{i+1}}f_{\ir X}(x)\diff x$\\
 
 	\emphbox{Signalleistung $P_{\ir X} = \E[\X^2] = \int\limits_{x_{\min}}^{x_{\max}} x^2 f_{\X}(x) \diff x$}\\
-	Gleichvert. $P_{\ir X} = \frac{x_{\max}^2}{3}$ \qquad Sin/Cos: $P_{\ir S} = \frac{x_{\max}^2}{2}$\\[1em]
+	Gleichverteilung: $P_{\ir X} = \frac{x_{\max}^2}{3}$ \qquad Sinusförmig: $P_{\ir S} = \frac{x_{\max}^2}{2}$\\[1em]
 	\emphbox{Fehlerleistung $P_{\ir Q} = \E[\textit{Q}^2] = \int\limits_{-\infty}^{\infty} q(x)^2 f_{\textit{Q}}(q) \diff q$}\\
 	Bei gleichverteiltem Quantisierungsfehler: $P_{\ir Q} = \frac{\Delta^2}{12}$
 
@@ -219,8 +223,6 @@ Quantisierungsfehler: $\vec q (\vec x) = \vec x_Q - \vec x = s_i - x$
 		\item Fehlerleistung $P_Q^{(t+1)} = \E[Q^2]$ mit $s_i^{(t+1)}$ und $g_i^{(t+1)}$
 		\item Berechne relative Änderung $\delta^{(t)} = \frac{P_Q^{(t+1)}-P_Q^{(t)}}{P_Q^{(t)}}$
 	}
-		
-	Mittlere Weglänge $\overline l = \sum \limits_{i= 0}^{n-1} p_i l_i$
 }
 
 
@@ -228,7 +230,10 @@ Quantisierungsfehler: $\vec q (\vec x) = \vec x_Q - \vec x = s_i - x$
 \sectionbox{
 	\subsection{Informationsgehalt und Entropie}
 	Info vom Symbol $s_i$: $I_i = - \log_2 \P(\X_Q = s_i) = -\log_2 p_i$\\ 
-	Entropie von $\X_Q$: $H(\X_Q) = \E[I] = - \sum\limits_{i = 0}^{M-1} p_i \log_2 p_i$\\
+	Entropie von $\X_Q$: $H(\X_Q) = \E[I] = - \sum\limits_{i = 0}^{M-1} p_i \log_2 p_i $
+	$\left[\frac{\ir{bit}}{\ir {Symbol}}\right]$\\
+	
+	Mittlere Codewortlänge $\overline l = \E[l] = \sum \limits_{i= 0}^{n-1} p_i l_i$
 
 	Die minimale mittlere Codewortlänge $\overline l \ge H(x_Q)$
 }
@@ -287,7 +292,7 @@ Quantisierungsfehler: $\vec q (\vec x) = \vec x_Q - \vec x = s_i - x$
 			\frac 1 2, &\text{ für } \abs{t} = \frac T 2 \\
 			0, &\text{ sonst }			
 		\end{cases}$
-		\hfill $G_{\ir NRZ} = T \sinc (fT)$\\ %T \frac{\sin(\pi f T)}{\pi f T}
+		\hfill $G_{\ir NRZ}(f) = T \sinc (fT)$\\ %T \frac{\sin(\pi f T)}{\pi f T}
 		\includegraphics{./img/FT/NRZ_t.pdf} \hfill  \includegraphics{./img/FT/NRZ_f.pdf}
 
 		\subsubsection{Manchester Impuls:} 
@@ -316,7 +321,7 @@ Quantisierungsfehler: $\vec q (\vec x) = \vec x_Q - \vec x = s_i - x$
 
 		\includegraphics{./img/FT/cos2_t.pdf} \hfill \includegraphics{./img/FT/cos2_f.pdf}
 
-		\subsubsection{$\sinc$-Impuls: $\sinc(x) = \si(\pi x)$}
+		\subsubsection{$\sinc$-Impuls: $\sinc(x) = {\rm si}(\pi x)$}
 		$g(t) = \frac{\sin (\pi \frac t T)}{\pi \frac t  T} = \sinc\left(\frac{t}{T}\right)$ \hfill
 		$G(f) = \begin{cases}
 			T, &\text{ für } \abs{f} < \frac{1}{2T}\\
@@ -346,7 +351,10 @@ Quantisierungsfehler: $\vec q (\vec x) = \vec x_Q - \vec x = s_i - x$
 		\includegraphics{./img/FT/gauss_t.pdf} \hfill \includegraphics{./img/FT/gauss_f.pdf}
 }
 
-\columnbreak	
+\columnbreak
+
+% TODO: Skript Seite 56 + FT von Aufgabe 18a) von SUM D_n d(t-nT) --> SUM D_n e^(-j2Pi n f T)
+	
 \sectionbox{
 	\subsection{Energie wichtiger Impulse mit Amplitude $A$}
 	\begin{tabular}{@{}ll}
@@ -359,7 +367,7 @@ Quantisierungsfehler: $\vec q (\vec x) = \vec x_Q - \vec x = s_i - x$
 \sectionbox{	
 	\subsection{Bandbreite}
 	Absolut: Alle positiven Frequenzen\\
-	B$_{99}$ Bandbreite: 99\% der Frequenzen (geht auch mit 90\%)\\
+	B$_{99}$ Bandbreite: 99\% der Signalenergie bzw. -leistung liegen in diesem Bandbreitenbereich (geht auch mit 90\%)\\
 	B$_{\ir 6dB}$ Bandbreite: Bis Hälfte des Spektrums $G(f)$\\
 	B$_{\ir 3dB}$ Bandbreite: Bis Hälfte der Leistung\\
 	B$_N$ Äquivalente Rauschbandbreite\\
@@ -368,7 +376,7 @@ Quantisierungsfehler: $\vec q (\vec x) = \vec x_Q - \vec x = s_i - x$
 
 	$\eta = \frac{\text{Übertragungsrate}}{\text{NF Bandbreite}}$ \qquad $\unitof{\eta} = \frac{\si{bit/s}}{\si{\hertz}}$
 
-	Beispiel GSM: $\eta = 0.88 \frac{\si{kbit/s}}{\si{\hertz}}$, \quad LTE: $\eta = \frac{3 \si{Gbit/s}}{100 \si{\mega \hertz}} = 30$\\
+	Beispiel GSM: $\eta = 0.88 \frac{\si{bit/s}}{\si{\hertz}}$, \quad LTE: $\eta = \frac{3 \si{Gbit/s}}{100 \si{\mega \hertz}} = 30 \frac{\si{bit/s}}{\si{\hertz}}$\\
 }
 
 
