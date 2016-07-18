@@ -78,7 +78,8 @@ Signal $\ra$ A/D Wandlung: Abtastung $\ra$ Digitaler Bitstrom $\ra$ D/A Wandlung
 % ============================================================================================
 \sectionbox{
 \subsection*{Abtasttheorem}
-Signal $x(t)$, Abtastfunktion $s(t) = \sum \delta(t-nT_s)$, Tiefpassfilter $h_r(t)$\\
+Signal $x(t)$, Abtastfunktion $s(t) = T_A \sum \delta(t-nT_s)$, \\
+Tiefpassfilter $h_r(t)$\\
 \\
 \begin{tabular*}{\columnwidth}{@{\extracolsep\fill}lll@{}}
 	Vorgang & Zeitbereich & Frequenzbereich\\
@@ -155,35 +156,31 @@ Quantisierungsfehler: $\vec q (\vec x) = \vec x_Q - \vec x = s_i - x$
 
 \sectionbox{
 	\subsection{Lineare Quantisierung}
-	Spezialfall der skalaren Quantisierung mit gleich großen Quantisierungsintervallen $\Delta$
+	Spezialfall der skalaren Quantisierung mit gleich großen Quantisierungsintervallen $\Delta$.
 	
 	\pbox{4cm}{\includegraphics{./img/pdf_quantization.pdf}} \ \pbox{4cm}{\includegraphics{./img/pdf_quantization_error.pdf}} \
 	\pbox{4cm}{\includegraphics{./img/quantization_error.pdf}}\\
 	\emphbox{Es gilt für PDF: $\int\limits_{-\infty}^\infty f_{\X}(x) \diff x \stackrel{!}{=} 1$}
 	
-	
 	Gleich große Quantisierungsintervalle $\mathcal I_i$ mit Breite $\Delta = g_{i+1} - g_i$\\
+	$\Delta = \frac{x_{\max} - x_{\min}}{2^m}$\\ \\
 	Reproduktionswerte $s_i$ in der Mitte der Intervalle (midriser)\\
+	$s_i = \frac{2i - M + 1}{2} \Delta$\\
 
-	\emphbox{Signalleistung $P_{\ir S} = \E[\X^2] = \int\limits_{x_{\min}}^{x_{\max}} x^2 f_{\X}(x) \diff x$}\\
-	Gleichvert. $P_{\ir S} = \frac{x_{\max}^2}{3}$ \qquad Sin/Cos: $P_{\ir S} = \frac{x_{\max}^2}{2}$\\[1em]
-	Fehlerleistung $P_{\ir Q} = \E[\textit{Q}^2] = \int q(x)^2 f_{\textit{Q}}(q) \diff q$\\
-	$\ra$ bei gleichverteiltem Quantisierungsfehler: $P_Q = \frac{\Delta^2}{12}$
+	\emphbox{Signalleistung $P_{\ir X} = \E[\X^2] = \int\limits_{x_{\min}}^{x_{\max}} x^2 f_{\X}(x) \diff x$}\\
+	Gleichvert. $P_{\ir X} = \frac{x_{\max}^2}{3}$ \qquad Sin/Cos: $P_{\ir S} = \frac{x_{\max}^2}{2}$\\[1em]
+	\emphbox{Fehlerleistung $P_{\ir Q} = \E[\textit{Q}^2] = \int\limits_{-\infty}^{\infty} q(x)^2 f_{\textit{Q}}(q) \diff q$}\\
+	Bei gleichverteiltem Quantisierungsfehler: $P_{\ir Q} = \frac{\Delta^2}{12}$
 
 	% wichtige Formel vgl. Übung 10 $P_Q = \sum \limits_{s_i} \int \limits_{-\Delta / 2}^{\Delta / 2} z^2 f_X (z + s_i) \diff z$
 
-	\emphbox{Signal-Noise-Ratio: $\SNR = \frac{P_S}{P_Q}$}
-	
-	$\SNR_{\si{\decibel}} = 10 \log_{10} \SNR = m \cdot \SI{6}{\decibel}$\\
-	\\
-	$\SNR_Q = \frac{P_x}{P_Q} = \begin{cases}
+	\emphbox{Signal-Noise-Ratio: $\SNR_Q = \frac{P_{\ir X}}{P_{\ir Q}}$}
+	$\SNR_Q = \frac{P_{\ir X}}{P_{\ir Q}} = \begin{cases}
 		\frac{x^2_{\ir max} /3}{\Delta^2 / 12} = 2^{2m} &\text{ bei gleichverteiltem Signal }\\
 		\frac{x^2_{\ir max} /2}{\Delta^2 / 12} = \frac 3 2 2^{2m} &\text{ bei sinusförmigem Signal }\\
-	\end{cases}$
-
-	Optimales $\Delta = \frac{x_{\max} - x_{\min}}{2^m}$ \qquad Reprodwerte $s_i = \frac{2i - M + 1}{2} \Delta$\\
-	Signal zu Quantisierungsrauschabstand: $m \cdot \SI{6}{\decibel}$
-
+	\end{cases}$\\ \\
+	Signal zu Quantisierungsrauschabstand $\SNR_{Q\si{\decibel}}$\\
+	$\SNR_{Q\si{\decibel}} = 10 \log_{10}(\SNR_Q)\si{\decibel} = m \cdot \SI{6}{\decibel}$\\
 	 (CD, $\SI{16}{bit}: \SI{96}{\decibel})$	
 }
 
