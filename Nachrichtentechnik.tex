@@ -560,16 +560,15 @@ Verzerrungsfrei: $h(t) = h_0 \dirac(t-t_0)$ \qquad $H(f) = h_0 e^{-\i 2 \pi f t_
 	Phase: $\varphi' (t) = \arctan \frac{S_Q (t)}{S_I (t)}$
 	
 	Mittl. Energie pro Symbol: $\ol E_S = \E[D_{I_n}^2 + D_{Q_n}^2] \cdot \underbrace{\int_0^T \abs{g_s (t)}^2 \diff t}_{E_{g_s}}$
-	
-	Energie je Bit : $\frac{E_s}{\text{Anzahl Bits}}$
+	Energie je Bit : $E_{\ir bit}=\frac{\ol E_S}{\text{\# Bits}}$\\
 
-	$d_{\ir min} $: Anfälligkeit gegenüber Rauschen
+	Anfälligkeit gegenüber Rauschen: $d_{\ir min} $
 }
 
 \sectionbox{
 	\subsection{Modulation und Signalraumzuordnung}
 
-	\includegraphics[width=6cm]{img/QAM_Sender.jpg}
+	\includegraphics[width=\columnwidth]{img/QAM_Sender.jpg}
 
 	Moduliertes Sendesignal
 
@@ -591,7 +590,7 @@ Verzerrungsfrei: $h(t) = h_0 \dirac(t-t_0)$ \qquad $H(f) = h_0 e^{-\i 2 \pi f t_
 \sectionbox{
 	\subsection{On-Off Keying (OOK)}
 	Intensitätsmodulation mit $b = 1$ (Laser an oder aus)\\
-	Mittlere Energie pro Symbol: $E_s = $\\
+	Mittlere Energie pro Symbol: $E_s = \frac{A^2_{\ir on}}{2}$\\
 }
 
 \sectionbox{
@@ -625,12 +624,13 @@ Verzerrungsfrei: $h(t) = h_0 \dirac(t-t_0)$ \qquad $H(f) = h_0 e^{-\i 2 \pi f t_
 
 
 \vspace{0.2cm}
+\columnbreak
 
 \raisebox{0.5cm}{Auch wichtig:} \qquad \includegraphics[height = 1cm]{./img/cat.jpg} \ \raisebox{0.5cm}{$\FT$}\ \includegraphics[height = 1.3cm]{./img/cat_f.jpg}\\
 \\
 \includegraphics[width = 5cm]{./img/xkcd2.jpg}
 
-\columnbreak
+%\columnbreak
 {\Huge \bf Eigene Notizen:}
 
 
